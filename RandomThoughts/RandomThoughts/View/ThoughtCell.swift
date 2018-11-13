@@ -16,6 +16,9 @@ class ThoughtCell: UITableViewCell {
     @IBOutlet weak var thoughtMsgLbl: UILabel!
     @IBOutlet weak var likesImage: UIImageView!
     @IBOutlet weak var likesCountLbl: UILabel!
+    @IBOutlet weak var commentsImage: UIImageView!
+    @IBOutlet weak var commentsCountLbl: UILabel!
+    
     
     private var thought: Thought!
     
@@ -42,13 +45,14 @@ class ThoughtCell: UITableViewCell {
         self.thought = thought
         if let dateString = thought.timestamp {
             let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = NSTimeZone.local
+            //dateFormatter.timeZone = NSTimeZone.local
             dateFormatter.dateFormat = "MMM d, h:mm a"
             let theTime = dateFormatter.string(from: dateString)
             usernameLbl.text = thought.username
             timestampLbl.text = theTime
             thoughtMsgLbl.text = thought.thoughtTxt
             likesCountLbl.text = String(thought.numLikes)
+            commentsCountLbl.text = String(thought.numComments)
         }
         
     }

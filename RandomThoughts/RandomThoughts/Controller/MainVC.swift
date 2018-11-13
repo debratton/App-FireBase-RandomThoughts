@@ -26,6 +26,11 @@ class MainVC: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
         thoughtsCollRef = Firestore.firestore().collection(REF_THOUGHTS)
+        
+        let db = Firestore.firestore()
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,20 +53,6 @@ class MainVC: UIViewController {
                     } else {
                         // Have to remove previous or they keep duplicating
                         self.thoughts.removeAll()
-//                        guard let snaps = snapshot else { return }
-//                        for snap in (snaps.documents) {
-//                            print("Item: \(snap.data())")
-//                            let data = snap.data()
-//                            let username = data[REF_USERNAME] as? String ?? "Anonymous"
-//                            let timestamp = data[REF_TIMESTAMP] as? Date ?? Date()
-//                            let thoughtTxt = data[REF_THOUGHTS_MSG] as? String ?? ""
-//                            let numLikes = data[REF_NUM_LIKES] as? Int ?? 0
-//                            let numComments = data[REF_NUM_COMMENTS] as? Int ?? 0
-//                            let documentId = snap.documentID
-//                            
-//                            let newThought = Thought(username: username, timestamp: timestamp, thoughtTxt: thoughtTxt, numLikes: numLikes, numComments: numComments, documentId: documentId)
-//                            self.thoughts.append(newThought)
-//                        }
                         self.thoughts = Thought.parseData(snapshot: snapshot)
                         self.tableView.reloadData()
                     }
@@ -83,6 +74,12 @@ class MainVC: UIViewController {
         }
     }
     
+    func navigateUser(place: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let whereToGo = storyboard.instantiateViewController(withIdentifier: place)
+        present(whereToGo, animated: true, completion: nil)
+    }
+    
     @IBAction func categorySegmentPressed(_ sender: Any) {
         switch categorySegmentControl.selectedSegmentIndex {
         case 0:
@@ -96,6 +93,20 @@ class MainVC: UIViewController {
         }
         thoughtsListener.remove()
         setListener()
+    }
+    
+    @IBAction func logoutBtnPressed(_ sender: UIBarButtonItem) {
+        let logoutPopup = UIAlertController(title: "Logout?", message: "Are you sure you want to logout?", preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: "Logout?", style: .destructive) { (buttonTapped) in
+            do {
+                try Auth.auth().signOut()
+                self.navigateUser(place: "loginNav")
+            } catch {
+                print("Error Logging Out: \(error.localizedDescription)")
+            }
+        }
+        logoutPopup.addAction(logoutAction)
+        present(logoutPopup, animated: true, completion: nil)
     }
 }
 
@@ -113,6 +124,20 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toComments", sender: thoughts[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toComments" {
+            if let destinationVC = segue.destination as? CommentsVC {
+                if let comment = sender as? Thought {
+                    destinationVC.comment = comment
+                }
+            }
         }
     }
 }

@@ -22,6 +22,9 @@
 		9096E35D2199034500F4F1D4 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096E35C2199034500F4F1D4 /* ThoughtCell.swift */; };
 		9096E35F219A028B00F4F1D4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096E35E219A028B00F4F1D4 /* LoginVC.swift */; };
 		9096E361219A084100F4F1D4 /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096E360219A084100F4F1D4 /* CreateUserVC.swift */; };
+		9096E363219A35FF00F4F1D4 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096E362219A35FF00F4F1D4 /* CommentsVC.swift */; };
+		9096E365219B1C3D00F4F1D4 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096E364219B1C3D00F4F1D4 /* CommentCell.swift */; };
+		9096E367219B1F2300F4F1D4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096E366219B1F2300F4F1D4 /* Comment.swift */; };
 		B3A16A72FCC0C1C83D30A0AB /* Pods_RandomThoughts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D984D8DA5CCE97A11F6FDA75 /* Pods_RandomThoughts.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,9 @@
 		9096E35C2199034500F4F1D4 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 		9096E35E219A028B00F4F1D4 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		9096E360219A084100F4F1D4 /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
+		9096E362219A35FF00F4F1D4 /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
+		9096E364219B1C3D00F4F1D4 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		9096E366219B1F2300F4F1D4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D0BAA5AF1EE64DD312691AA4 /* Pods-RandomThoughts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomThoughts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomThoughts/Pods-RandomThoughts.debug.xcconfig"; sourceTree = "<group>"; };
 		D984D8DA5CCE97A11F6FDA75 /* Pods_RandomThoughts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomThoughts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,6 +108,7 @@
 				9096E34B2198B2B700F4F1D4 /* AddThoughtVC.swift */,
 				9096E35E219A028B00F4F1D4 /* LoginVC.swift */,
 				9096E360219A084100F4F1D4 /* CreateUserVC.swift */,
+				9096E362219A35FF00F4F1D4 /* CommentsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +119,7 @@
 				9096E34D2198B46A00F4F1D4 /* ButtonCornerRounding.swift */,
 				9096E3512198B6B800F4F1D4 /* TextViewCornderRounding.swift */,
 				9096E35C2199034500F4F1D4 /* ThoughtCell.swift */,
+				9096E364219B1C3D00F4F1D4 /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,6 +129,7 @@
 			children = (
 				9096E3552198C50B00F4F1D4 /* ThoughtCategory.swift */,
 				9096E35A2199013800F4F1D4 /* Thought.swift */,
+				9096E366219B1F2300F4F1D4 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,8 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9096E365219B1C3D00F4F1D4 /* CommentCell.swift in Sources */,
 				9096E3522198B6B800F4F1D4 /* TextViewCornderRounding.swift in Sources */,
 				9096E34E2198B46A00F4F1D4 /* ButtonCornerRounding.swift in Sources */,
+				9096E367219B1F2300F4F1D4 /* Comment.swift in Sources */,
+				9096E363219A35FF00F4F1D4 /* CommentsVC.swift in Sources */,
 				9096E34C2198B2B700F4F1D4 /* AddThoughtVC.swift in Sources */,
 				9096E35B2199013800F4F1D4 /* Thought.swift in Sources */,
 				9096E35F219A028B00F4F1D4 /* LoginVC.swift in Sources */,
